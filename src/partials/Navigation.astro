@@ -1,0 +1,67 @@
+---
+import '@fontsource-variable/montserrat';
+---
+<nav class="fixed top-0 left-0 right-0 z-50 backdrop-blur-sm bg-white/40 shadow-lg">
+    <div class="container mx-auto px-4">
+        <div class="flex justify-between items-center py-4">
+            <div>
+                <img src="./assets/logo.webp" alt="SIMA_logo" class="w-48">
+            </div>
+            <div class="flex items-center">
+                <ul class="flex gap-5">
+                    <li class="flex items-center group">
+                        <a href="#inicio" class="relative">
+                            <h2 class="text-xl font-medium">INICIO</h2>
+                            <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-500 transition-all duration-300 group-hover:w-full"></span>
+                        </a>
+                    </li>
+                    <li class="flex items-center group">
+                        <a href="#servicios" class="relative">
+                            <h2 class="text-xl font-medium">SERVICIOS</h2>
+                            <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-500 transition-all duration-300 group-hover:w-full group-hover:bg-blue-500"></span>
+                        </a>
+                    </li>
+                    <li class="flex items-center group">
+                        <a href="#nosostros" class="relative">
+                            <h2 class="text-xl font-medium">SOBRE NOSOTROS</h2>
+                            <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-500 transition-all duration-300 group-hover:w-full group-hover:bg-blue-500"></span>
+                        </a>
+                    </li>
+                    <li class="flex items-center group">
+                        <a href="#contacto" class="relative">
+                            <h2 class="text-xl font-medium">CONTACTO</h2>
+                            <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-500 transition-all duration-300 group-hover:w-full group-hover:bg-blue-500"></span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>
+<script is:inline>
+    document.addEventListener('DOMContentLoaded', () => {
+      const sections = document.querySelectorAll('section[id]');
+      const navLinks = document.querySelectorAll('nav ul li a');
+  
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            const id = entry.target.getAttribute('id');
+            const navLink = document.querySelector(`nav ul li a[href="#${id}"]`);
+  
+            if (entry.isIntersecting) {
+              navLinks.forEach((link) => link.classList.remove('active-link'));
+              navLink?.classList.add('active-link');
+            }
+          });
+        },
+        {
+          rootMargin: '-50% 0px -50% 0px', 
+          threshold: 0.1,
+        }
+      );
+  
+      sections.forEach((section) => observer.observe(section));
+    });
+  </script>
+  
