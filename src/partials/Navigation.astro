@@ -37,31 +37,4 @@ import '@fontsource-variable/montserrat';
             </div>
         </div>
     </div>
-</nav>
-<script is:inline>
-    document.addEventListener('DOMContentLoaded', () => {
-      const sections = document.querySelectorAll('section[id]');
-      const navLinks = document.querySelectorAll('nav ul li a');
-  
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            const id = entry.target.getAttribute('id');
-            const navLink = document.querySelector(`nav ul li a[href="#${id}"]`);
-  
-            if (entry.isIntersecting) {
-              navLinks.forEach((link) => link.classList.remove('active-link'));
-              navLink?.classList.add('active-link');
-            }
-          });
-        },
-        {
-          rootMargin: '-50% 0px -50% 0px', 
-          threshold: 0.1,
-        }
-      );
-  
-      sections.forEach((section) => observer.observe(section));
-    });
-  </script>
-  
+</nav> 
